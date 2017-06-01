@@ -1,0 +1,17 @@
+= Overview
+This project creates a Docker image start a Apache httpd server as Nexus reverse proxy. It provides:
+
+* Redirect http to https (80 to 443).
+* The SSL termination for the Nexus server.
+* Expose port 5000 for anonymous access to the Nexus server.
+* Expose port 15001 for Docker push which requires HTTP Basic Authentication.
+
+= Build
+[source, bash]
+----
+docker build -t rhapdocker:5000/bi/nexus-httpd-proxy
+docker push rhapdocker:5000/bi/nexus-httpd-proxy
+----
+
+= Usage
+Use `docker-composer` and `docker-compose.yaml` in `docker-bi-nexus` to start `nexus 3` and `nexus-httpd-proxy`.
